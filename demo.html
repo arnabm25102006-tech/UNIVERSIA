@@ -4,37 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Team UNIVERSIA — Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --brand:#2563eb;
-      --bg:#f9fbfd;
-      --card:#ffffff;
-      --muted:#6b7280;
-    }
-    body { margin:0; font-family:Arial, sans-serif; background:var(--bg); color:#111827; }
-    header { background:var(--brand); color:white; padding:14px 28px; display:flex; align-items:center; justify-content:space-between; }
-    .logo { font-weight:700; font-size:20px; }
-    nav a { color:white; text-decoration:none; margin-left:18px; font-weight:600; opacity:0.95; }
-    nav a.active { outline:2px solid rgba(255,255,255,0.15); padding:6px 10px; border-radius:8px; background: rgba(255,255,255,0.06); }
+    body { margin:0; font-family:'Poppins',sans-serif; background:#f9fbfd; color:#111827; }
+    header { background:#2563eb; color:white; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-weight:700; font-size:22px; }
+    nav a { color:white; margin-left:20px; text-decoration:none; font-weight:600; }
+    nav a.active { border-bottom:3px solid white; padding-bottom:4px; }
 
-    .wrap { max-width:980px; margin:32px auto; padding:22px; background:var(--card); border-radius:12px; box-shadow:0 6px 18px rgba(17,24,39,0.06); }
+    .hero { background:linear-gradient(rgba(37,99,235,0.7),rgba(37,99,235,0.7)),url('https://source.unsplash.com/1600x700/?demo,technology') center/cover; color:white; text-align:center; padding:80px 20px; }
+    .hero h1 { font-size:40px; margin:0 0 10px; }
 
-    h1 { color:var(--brand); margin-bottom:12px; text-align:center; }
-    p.lead { color:var(--muted); margin-bottom:20px; text-align:center; }
-
-    iframe { width:100%; height:400px; border:none; border-radius:10px; margin:20px 0; }
-
-    .btn { display:inline-block; padding:12px 22px; border-radius:8px; background:var(--brand); color:white; text-decoration:none; font-weight:600; transition:0.2s; }
-    .btn:hover { background:#1d4ed8; }
-
-    /* demo form */
-    .demo-form { margin-top:20px; padding:20px; background:#f3f6fb; border-radius:10px; }
+    .container { max-width:1000px; margin:40px auto; padding:20px; }
+    .demo-form { background:white; padding:20px; border-radius:14px; box-shadow:0 4px 14px rgba(0,0,0,0.08); }
     label { display:block; margin:10px 0 5px; font-weight:600; }
     input, select { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; margin-bottom:12px; }
+    .btn { display:inline-block; padding:12px 22px; border-radius:8px; background:#2563eb; color:white; text-decoration:none; font-weight:600; }
+    .btn:hover { background:#1e40af; }
     .progress { height:14px; background:#e5e7eb; border-radius:8px; overflow:hidden; margin:12px 0 20px; }
-    .progress-bar { height:100%; width:0%; background:var(--brand); transition:width 0.4s ease; }
-
-    footer { text-align:center; padding:18px; color:var(--muted); margin-top:28px; }
+    .progress-bar { height:100%; width:0%; background:#2563eb; transition:width 0.4s ease; }
+    footer { text-align:center; padding:20px; background:#1f2937; color:#e5e7eb; margin-top:30px; }
   </style>
 </head>
 <body>
@@ -50,64 +39,49 @@
     </nav>
   </header>
 
-  <main class="wrap">
+  <section class="hero">
     <h1>Live Demo</h1>
-    <p class="lead">Try out a mini interactive onboarding flow — see how fast and smooth it is!</p>
+    <p>Experience our onboarding flow instantly</p>
+  </section>
 
-    <!-- Interactive Form -->
+  <div class="container">
     <div class="demo-form">
       <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
-
       <form id="onboardingForm">
         <label for="name">👤 Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
-
+        <input type="text" id="name" required />
         <label for="email">📧 Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required />
-
+        <input type="email" id="email" required />
         <label for="role">🎓 Role</label>
-        <select id="role" name="role" required>
+        <select id="role" required>
           <option value="">Select role</option>
-          <option value="student">Student</option>
-          <option value="faculty">Faculty</option>
-          <option value="admin">Admin</option>
+          <option>Student</option>
+          <option>Faculty</option>
+          <option>Admin</option>
         </select>
-
         <button type="submit" class="btn">🚀 Submit</button>
       </form>
-
       <p id="result" style="margin-top:15px;font-weight:bold;color:green;display:none;">✅ Onboarding complete!</p>
     </div>
-
-    <!-- Optional Video -->
-    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
-
-    <!-- External Link -->
-    <div style="text-align:center; margin-top:20px;">
-      <a href="https://your-deployed-link.com" target="_blank" class="btn">🌐 Try Full Project</a>
-    </div>
-  </main>
+  </div>
 
   <footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
 
   <script>
-    const form = document.getElementById("onboardingForm");
-    const bar = document.getElementById("progress-bar");
-    const result = document.getElementById("result");
-
-    form.addEventListener("input", () => {
-      let filled = 0;
-      const inputs = form.querySelectorAll("input, select");
-      inputs.forEach(i => { if(i.value.trim() !== "") filled++; });
-      const percent = Math.floor((filled / inputs.length) * 100);
-      bar.style.width = percent + "%";
+    const form=document.getElementById("onboardingForm");
+    const bar=document.getElementById("progress-bar");
+    const result=document.getElementById("result");
+    form.addEventListener("input",()=>{
+      let filled=0;
+      const inputs=form.querySelectorAll("input,select");
+      inputs.forEach(i=>{if(i.value.trim()!=="") filled++;});
+      bar.style.width=Math.floor((filled/inputs.length)*100)+"%";
     });
-
-    form.addEventListener("submit", e => {
+    form.addEventListener("submit",e=>{
       e.preventDefault();
-      bar.style.width = "100%";
-      result.style.display = "block";
-      setTimeout(()=>alert("Demo complete! 🎉"), 500);
+      bar.style.width="100%";
+      result.style.display="block";
+      alert("Demo Complete 🎉");
     });
   </script>
 </body>
