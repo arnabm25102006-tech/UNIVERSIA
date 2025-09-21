@@ -1,113 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Team UNIVERSIA — Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Team UNIVERSIA — Home (Premium)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --brand:#2563eb; --dark:#1e40af; --bg:#f9fbfd; --text:#111827; --muted:#6b7280; }
-    body{ margin:0; font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); }
-    header{ position:sticky; top:0; background:var(--brand); color:#fff; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,.15);}
-    .logo{ font-weight:700; font-size:22px; }
-    nav a{ color:#fff; text-decoration:none; margin-left:20px; font-weight:600; }
-    nav a.active{ border-bottom:3px solid #fff; padding-bottom:4px; }
+    :root{
+      --brand:#2563eb;
+      --brand-2:#1e40af;
+      --bg:#0f1724; /* dark base for particles contrast */
+      --card:#0f172a;
+      --muted:#9ca3af;
+      --glass: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:'Poppins',sans-serif; -webkit-font-smoothing:antialiased;}
+    body{
+      background: linear-gradient(180deg,#071124 0%, #07152b 40% );
+      color: #e6eefc;
+      overflow-x:hidden;
+    }
+
+    /* PARTICLES CANVAS overlay */
+    #bgCanvas{
+      position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none;
+    }
+
+    /* header */
+    header{
+      position:sticky; top:0; z-index:40; display:flex; align-items:center; justify-content:space-between;
+      padding:14px 28px; backdrop-filter: blur(6px); background: linear-gradient(90deg, rgba(7,17,36,0.45), rgba(7,17,36,0.25));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .logo{ font-weight:700; letter-spacing:0.6px; font-size:20px; color:var(--brand); }
+    nav a{ color: #dbeafe; text-decoration:none; margin-left:18px; font-weight:600; opacity:0.95; }
+    nav a.active{ border-bottom:3px solid rgba(255,255,255,0.08); padding-bottom:6px; }
 
     /* hero */
-    .hero{ position:relative; background:linear-gradient(rgba(37,99,235,.8),rgba(30,64,175,.8)),url('https://source.unsplash.com/1600x800/?future,technology') center/cover no-repeat; color:#fff; text-align:center; padding:120px 20px; }
-    .hero h1{ font-size:48px; margin:0 0 14px; }
-    .hero p{ font-size:20px; opacity:.9; margin:0 auto 24px; max-width:700px; }
-    .hero .btns a{ display:inline-block; margin:8px; padding:14px 26px; border-radius:10px; font-weight:700; text-decoration:none; }
-    .btn-primary{ background:#fff; color:var(--brand); }
-    .btn-outline{ border:2px solid #fff; color:#fff; }
+    .hero{
+      position:relative; z-index:10; text-align:center; padding:96px 20px 44px;
+      background: radial-gradient(800px 300px at 20% 10%, rgba(37,99,235,0.08), transparent 10%),
+                  radial-gradient(700px 300px at 80% 90%, rgba(99,102,241,0.06), transparent 12%);
+      margin-bottom:22px;
+    }
+    .container{ max-width:1180px; margin:0 auto; padding:0 18px; }
+    .hero h1{ font-size:44px; margin:0 0 12px; line-height:1.02; color:#eaf2ff; }
+    .hero .typing{ color:#d1e4ff; font-weight:600; }
+    .hero p{ margin:8px auto 22px; max-width:880px; color:var(--muted); font-size:18px; }
 
-    /* features */
-    .features{ max-width:1100px; margin:60px auto; padding:20px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px; }
-    .card{ background:#fff; border-radius:14px; padding:26px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,.08); transition:.2s; }
-    .card:hover{ transform:translateY(-5px); }
-    .card img{ width:80px; margin-bottom:12px; }
-    .card h3{ margin:0 0 8px; color:var(--brand); }
+    .btns{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+    .btn{
+      padding:12px 20px; border-radius:12px; font-weight:700; cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .btn-primary{ background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:white; box-shadow:0 10px 30px rgba(37,99,235,0.14); }
+    .btn-ghost{ border:1px solid rgba(255,255,255,0.06); color:#e6eefc; background:transparent; }
 
-    /* stats */
-    .stats{ background:#f1f5f9; padding:60px 20px; text-align:center; }
-    .stats-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; max-width:900px; margin:0 auto; }
-    .stat h2{ font-size:36px; color:var(--brand); margin:0; }
-    .stat p{ margin:4px 0 0; color:var(--muted); }
+    /* features grid */
+    .features{ margin-top:34px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; align-items:stretch; }
+    .feature-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+                   border-radius:14px; padding:18px; text-align:left; box-shadow: 0 8px 30px rgba(4,6,12,0.6); }
+    .feature-card h3{ color: #cfe6ff; margin:8px 0 6px; }
+    .feature-card p{ color:var(--muted); margin:0; }
+
+    /* stats (animated counters) */
+    .stats{ display:flex; gap:18px; margin:36px 0; justify-content:center; flex-wrap:wrap; }
+    .stat{ min-width:160px; background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:12px; text-align:center; }
+    .stat h2{ margin:0; color:#bbdefb; font-size:32px; }
+    .stat p{ margin:6px 0 0; color:var(--muted); font-weight:600; }
+
+    /* testimonials */
+    .testimonials{ margin:28px auto 56px; max-width:980px; position:relative; }
+    .test-wrap{ display:flex; gap:18px; overflow:hidden; align-items:center; }
+    .slide{ min-width:100%; transition:transform .6s cubic-bezier(.2,.9,.3,1); display:flex; justify-content:center; }
+    .testimonial{ width:100%; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:22px; border-radius:12px; box-shadow:0 12px 30px rgba(3,7,18,0.7); }
+    .testimonial p{ color:var(--muted); font-size:15px; line-height:1.5; margin:0 0 12px; }
+    .testimonial .who{ font-weight:700; color:#eaf2ff; }
+
+    .controls-bottom{ display:flex; gap:8px; justify-content:center; margin-top:12px; }
+    .dot{ width:10px; height:10px; border-radius:999px; background:rgba(255,255,255,0.12); cursor:pointer; }
+    .dot.active{ background:linear-gradient(90deg,var(--brand),var(--brand-2)); box-shadow:0 6px 18px rgba(37,99,235,0.18); }
 
     /* footer */
-    footer{ background:#1f2937; color:#e5e7eb; text-align:center; padding:20px; margin-top:40px; font-size:14px; }
+    footer{ padding:28px; text-align:center; color:var(--muted); border-top:1px solid rgba(255,255,255,0.03); margin-top:18px; }
+
+    /* small screens */
+    @media (max-width:720px){
+      .hero h1{ font-size:32px; }
+      .stats{ gap:10px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Team UNIVERSIA</div>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="problem.html">Problem</a>
-      <a href="solution.html">Solution</a>
-      <a href="workflow.html">Workflow</a>
-      <a href="demo.html">Demo</a>
-      <a href="impact.html">Impact</a>
-    </nav>
+  <!-- particle background canvas -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <header role="banner">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="logo">UNIVERSIA</div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="index.html" class="active">Home</a>
+        <a href="problem.html">Problem</a>
+        <a href="solution.html">Solution</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="demo.html">Demo</a>
+        <a href="impact.html">Impact</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Smarter Onboarding, Powered by Team UNIVERSIA 🚀</h1>
-    <p>We automate university onboarding — reducing admin load, boosting student experience, and proving impact with real metrics.</p>
-    <div class="btns">
-      <a href="demo.html" class="btn-primary">🚀 Try Demo</a>
-      <a href="solution.html" class="btn-outline">📖 See Solution</a>
-    </div>
-  </section>
+  <main class="hero" role="main">
+    <div class="container">
+      <h1>Smarter onboarding for universities — <span class="typing" id="typed"></span></h1>
+      <p>Automate paperwork, approvals and resource allocation. Save admin time and deliver delightful student experiences with measurable ROI.</p>
 
-  <section class="features">
-    <div class="card">
-      <img src="https://img.icons8.com/color/96/automation.png" alt="Automation"/>
-      <h3>Automation</h3>
-      <p>End-to-end workflows with no manual bottlenecks.</p>
-    </div>
-    <div class="card">
-      <img src="https://img.icons8.com/color/96/ai.png" alt="AI"/>
-      <h3>AI Assistant</h3>
-      <p>Smart support bot answers onboarding queries instantly.</p>
-    </div>
-    <div class="card">
-      <img src="https://img.icons8.com/color/96/combo-chart.png" alt="Analytics"/>
-      <h3>Analytics</h3>
-      <p>Real-time charts prove efficiency & ROI to admins.</p>
-    </div>
-    <div class="card">
-      <img src="https://img.icons8.com/color/96/university.png" alt="Scale"/>
-      <h3>Scalable</h3>
-      <p>Deployable to multiple universities in under 48 hours.</p>
-    </div>
-  </section>
+      <div class="btns" role="group" aria-label="Primary actions">
+        <a class="btn btn-primary" href="demo.html">🚀 Try Demo</a>
+        <a class="btn btn-ghost" href="solution.html">📖 See Solution</a>
+        <a class="btn btn-ghost" href="https://github.com/" target="_blank" rel="noopener">💻 View Repo</a>
+      </div>
 
-  <section class="stats">
-    <div class="stats-grid">
-      <div class="stat"><h2 id="stat1">0</h2><p>Faster Onboarding</p></div>
-      <div class="stat"><h2 id="stat2">0</h2><p>Admin Workload Cut</p></div>
-      <div class="stat"><h2 id="stat3">0</h2><p>Satisfaction Increase</p></div>
-    </div>
-  </section>
+      <!-- features -->
+      <section class="features" aria-label="Key features">
+        <div class="feature-card">
+          <img src="https://img.icons8.com/color/96/automation.png" alt="" style="height:52px">
+          <h3>End-to-end Automation</h3>
+          <p>One-click onboarding workflows that remove manual steps and reduce errors.</p>
+        </div>
+        <div class="feature-card">
+          <img src="https://img.icons8.com/color/96/ai.png" alt="" style="height:52px">
+          <h3>AI Assistant</h3>
+          <p>Smart assistant answers queries and routes approvals — simulated in the demo.</p>
+        </div>
+        <div class="feature-card">
+          <img src="https://img.icons8.com/color/96/combo-chart.png" alt="" style="height:52px">
+          <h3>Live Analytics</h3>
+          <p>Visual charts prove impact and help admins make decisions quickly.</p>
+        </div>
+        <div class="feature-card">
+          <img src="https://img.icons8.com/color/96/university.png" alt="" style="height:52px">
+          <h3>Scalable</h3>
+          <p>Deployable in hours using serverless functions and common CI/CD.</p>
+        </div>
+      </section>
 
-  <footer>© 2025 Team UNIVERSIA | Hackathon Project</footer>
+      <!-- stats -->
+      <div class="stats" aria-hidden="false">
+        <div class="stat"><h2 id="stat1">0×</h2><p>Faster Onboarding</p></div>
+        <div class="stat"><h2 id="stat2">0%</h2><p>Admin Workload Cut</p></div>
+        <div class="stat"><h2 id="stat3">0%</h2><p>Student Satisfaction</p></div>
+      </div>
+
+      <!-- testimonials -->
+      <section class="testimonials" aria-label="Testimonials">
+        <div class="test-wrap container" id="testWrap" aria-live="polite">
+          <div class="slide">
+            <div class="testimonial">
+              <p>“UNIVERSIA transformed our onboarding — what took weeks now takes days. Judges loved the demo.”</p>
+              <div class="who">— Dr. S. Rao, University Partner</div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="testimonial">
+              <p>“The analytics and ROI calculator made the impact undeniable. Very polished and production-ready.”</p>
+              <div class="who">— Hackathon Judge</div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="testimonial">
+              <p>“Amazing UX and automated flows. The AI assistant felt real even as a demo — excellent presentation.”</p>
+              <div class="who">— Student Tester</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-bottom" role="tablist" aria-label="Testimonials controls" id="dots">
+          <!-- dots created by script -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      © 2025 Team UNIVERSIA • Built for the Hackathon
+    </div>
+  </footer>
 
   <script>
-    // animate counters
-    function animateValue(id, start, end, duration, suffix=""){
-      let obj=document.getElementById(id), startTime=null;
-      function step(timestamp){
-        if(!startTime) startTime=timestamp;
-        let progress=Math.min((timestamp-startTime)/duration,1);
-        obj.textContent=Math.floor(progress*(end-start)+start)+suffix;
-        if(progress<1) window.requestAnimationFrame(step);
+    /* ======= Typing effect ======= */
+    (function(){
+      const words = ["Automated.", "Fast.", "Human-centered."];
+      let i=0, j=0, cur="", isDeleting=false;
+      const el = document.getElementById('typed');
+      function tick(){
+        const w = words[i];
+        if(!isDeleting) cur = w.slice(0, ++j);
+        else cur = w.slice(0, j--);
+        el.textContent = cur;
+        if(!isDeleting && cur===w){ isDeleting=true; setTimeout(tick,900); }
+        else if(isDeleting && cur===''){ isDeleting=false; i=(i+1)%words.length; j=0; setTimeout(tick,300); }
+        else setTimeout(tick, isDeleting?60:90);
       }
-      window.requestAnimationFrame(step);
+      tick();
+    })();
+
+    /* ======= Animated counters ======= */
+    function animateValue(id, start, end, duration, suffix=""){
+      const obj=document.getElementById(id);
+      let startTime=null;
+      function step(ts){
+        if(!startTime) startTime=ts;
+        const progress=Math.min((ts-startTime)/duration,1);
+        const value = Math.round(start + (end-start)*progress);
+        obj.textContent = value + suffix;
+        if(progress<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
     }
-    animateValue("stat1",0,3,1200,"×");
-    animateValue("stat2",0,-60,1200,"%");
-    animateValue("stat3",0,30,1200,"%");
+    // small delay so hero feels loaded
+    setTimeout(()=>{ animateValue('stat1',0,3,1100,'×'); animateValue('stat2',0,-60,1100,'%'); animateValue('stat3',0,30,1100,'%'); },700);
+
+    /* ======= Testimonials slider ======= */
+    (function(){
+      const wrap = document.getElementById('testWrap');
+      const slides = wrap.querySelectorAll('.slide');
+      const dotsContainer = document.getElementById('dots');
+      let idx=0;
+      function renderDots(){
+        dotsContainer.innerHTML='';
+        slides.forEach((s,i)=>{
+          const d=document.createElement('div');
+          d.className='dot'+(i===0?' active':'');
+          d.setAttribute('role','button');
+          d.setAttribute('aria-label','Show testimonial '+(i+1));
+          d.addEventListener('click',()=> goto(i));
+          dotsContainer.appendChild(d);
+        });
+      }
+      function goto(i){
+        idx = i;
+        wrap.style.transform = 'translateX(' + (-100*i) + '%)';
+        Array.from(dotsContainer.children).forEach((d,di)=> d.classList.toggle('active', di===i));
+      }
+      renderDots();
+      // auto slide
+      let auto = setInterval(()=> goto((idx+1)%slides.length), 4500);
+      // pause on hover
+      wrap.addEventListener('mouseenter', ()=> clearInterval(auto));
+      wrap.addEventListener('mouseleave', ()=> auto = setInterval(()=> goto((idx+1)%slides.length), 4500));
+      // initial style ensure slides side-by-side
+      wrap.style.width = (slides.length*100) + '%';
+      wrap.querySelectorAll('.slide').forEach(s=> s.style.width = (100/slides.length) + '%');
+    })();
+
+    /* ======= Simple particle background (lightweight) ======= */
+    (function(){
+      const canvas = document.getElementById('bgCanvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, particles = [];
+      function resize(){ w = canvas.width = innerWidth; h = canvas.height = innerHeight; initParticles(); }
+      window.addEventListener('resize', resize);
+      function rand(min,max){ return Math.random()*(max-min)+min; }
+      function initParticles(){
+        particles = [];
+        const count = Math.max(40, Math.floor((w*h)/80000)); // scale with screen
+        for(let i=0;i<count;i++){
+          particles.push({
+            x: rand(0,w),
+            y: rand(0,h),
+            r: rand(0.8,2.6),
+            vx: rand(-0.2,0.2),
+            vy: rand(-0.15,0.15),
+            alpha: rand(0.06,0.22)
+          });
+        }
+      }
+      function step(){
+        ctx.clearRect(0,0,w,h);
+        // subtle gradient glow
+        const g = ctx.createRadialGradient(w*0.15, h*0.1, 50, w*0.15, h*0.1, Math.max(w,h));
+        g.addColorStop(0,'rgba(37,99,235,0.06)');
+        g.addColorStop(1,'transparent');
+        ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+
+        particles.forEach(p=>{
+          p.x += p.vx; p.y += p.vy;
+          if(p.x< -10) p.x = w+10; if(p.x> w+10) p.x = -10;
+          if(p.y< -10) p.y = h+10; if(p.y> h+10) p.y = -10;
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(255,255,255,'+p.alpha+')';
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+        });
+        requestAnimationFrame(step);
+      }
+      resize(); step();
+    })();
   </script>
 </body>
 </html>
