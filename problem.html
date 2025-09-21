@@ -1,80 +1,115 @@
-<!doctype html>
-<html lang="en" data-theme="light">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Problem — Hackathon Pitch</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team UNIVERSIA - Problem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9fbfd;
+      color: #222;
+    }
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header .logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2563eb;
+      margin-bottom: 15px;
+    }
+    .metrics {
+      float: right;
+      border-left: 4px solid #2563eb;
+      padding-left: 15px;
+      margin-left: 20px;
+      color: #333;
+      font-weight: 500;
+    }
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+    ul li {
+      margin-bottom: 8px;
+    }
+    footer {
+      margin-top: 50px;
+      padding: 15px;
+      text-align: center;
+      font-size: 14px;
+      background: #f1f5f9;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="logo">Team UNIVERSIA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="problem.html">Problem</a>
+      <a href="solution.html">Solution</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="demo.html">Demo</a>
+      <a href="impact.html">Impact</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <div class="nav">
-      <div class="brand"><div class="logo">UNV</div><div><div style="font-weight:800">Team UNIVERSIA</div><div class="small-muted">Problem</div></div></div>
-      <div class="navlinks">
-        <a href="index.html">Home</a>
-        <a href="problem.html">Problem</a>
-        <a href="solution.html">Solution</a>
-        <a href="workflow.html">Workflow</a>
-        <a href="demo.html">Demo</a>
-        <a href="impact.html">Impact</a>
-      </div>
-      <div class="toggle" id="themeToggleP">🌗 <span class="small-muted">Theme</span></div>
+    <h2>Problem Statement</h2>
+    <div class="metrics">
+      <p><strong>Target metric</strong></p>
+      <p>One clear metric to measure impact:</p>
+      <p style="color:#2563eb;font-weight:bold;">Faster onboarding by 3x</p>
     </div>
 
-    <div class="page">
-      <div class="section">
-        <div class="left">
-          <div class="card">
-            <h2 style="margin:0">Problem Statement</h2>
-            <p class="lead">(One-liner) — Replace with your hackathon's exact problem</p>
-            <ul style="color:var(--muted)">
-              <li><strong>Who</strong>: Target users</li>
-              <li><strong>What</strong>: The gap we close</li>
-              <li><strong>Why now</strong>: urgency or trend</li>
-            </ul>
+    <p><strong>One-liner:</strong> Streamlining onboarding for university students by automating manual workflows.</p>
 
-            <div style="margin-top:12px">
-              <h4>Constraints (judges care):</h4>
-              <ul style="color:var(--muted)">
-                <li>Deployable MVP in ~48 hours</li>
-                <li>Reproducible demo (no flaky infra)</li>
-                <li>Clear impact metrics</li>
-              </ul>
-            </div>
-          </div>
+    <p><strong>Who:</strong> University students, faculty, and admin staff.</p>
+    <p><strong>What:</strong> Current onboarding systems are slow, confusing, and lack automation. We close this gap by building a unified, automated onboarding tool.</p>
+    <p><strong>Why now:</strong> Universities are rapidly digitizing, and students expect seamless digital experiences.</p>
 
-          <div class="card" style="margin-top:14px">
-            <h3>Pain points</h3>
-            <ol style="color:var(--muted)">
-              <li>Existing tools are slow to set up</li>
-              <li>Hard to reproduce for judges</li>
-              <li>Lack of automation & tests</li>
-            </ol>
-          </div>
-        </div>
+    <h3>Constraints (judges care):</h3>
+    <ul>
+      <li>Deployable MVP in ~48 hours</li>
+      <li>Reproducible demo (no flaky infra)</li>
+      <li>Clear impact metrics</li>
+    </ul>
 
-        <div class="right">
-          <div class="card">
-            <div style="font-weight:700">Target metric</div>
-            <div class="small-muted" style="margin-top:8px">One clear metric to measure impact</div>
-            <div style="margin-top:12px;font-size:22px;font-weight:800;color:var(--accent-color)">Faster onboarding by 3x</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="height:40px"></div>
-    <div class="footer"><div class="small-muted">Team UNIVERSIA • Problem</div><div></div></div>
+    <h3>Pain points</h3>
+    <ul>
+      <li>Existing tools are slow to set up</li>
+      <li>Hard to reproduce for judges</li>
+      <li>Lack of automation & testing</li>
+    </ul>
   </div>
 
-<script>
-document.getElementById('themeToggleP').addEventListener('click', ()=>{
-  const root = document.documentElement;
-  const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  root.setAttribute('data-theme', cur);
-});
-</script>
+  <footer>
+    © 2025 Team UNIVERSIA | Hackathon Project
+  </footer>
 </body>
 </html>
-
-
-
