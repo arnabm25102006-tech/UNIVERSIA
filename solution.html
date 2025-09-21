@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Team UNIVERSIA — Solution</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>UNIVERSIA — Solution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:'Poppins',sans-serif; background:#f9fbfd; color:#111827; }
-    header { background:#2563eb; color:white; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
-    .logo { font-weight:700; font-size:22px; }
-    nav a { color:white; margin-left:20px; text-decoration:none; font-weight:600; }
-    nav a.active { border-bottom:3px solid white; padding-bottom:4px; }
-
-    .hero { background:linear-gradient(rgba(37,99,235,0.7),rgba(37,99,235,0.7)),url('https://source.unsplash.com/1600x700/?solution,innovation') center/cover; color:white; text-align:center; padding:80px 20px; }
-    .hero h1 { font-size:40px; margin:0 0 10px; }
-
-    .container { max-width:1000px; margin:40px auto; padding:20px; }
-    h2 { color:#2563eb; margin-bottom:10px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:20px; }
-    .card { background:white; padding:20px; border-radius:14px; box-shadow:0 4px 14px rgba(0,0,0,0.08); text-align:center; }
-    .card img { width:80px; margin-bottom:10px; }
-    .card h3 { margin:0 0 10px; color:#2563eb; }
-    footer { text-align:center; padding:20px; background:#1f2937; color:#e5e7eb; margin-top:30px; }
+    :root{--brand1:#60a5fa;--brand2:#2563eb;--brand3:#9333ea;--bg:#0f1724;--muted:#9ca3af;}
+    body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:#e6eefc;}
+    header{background:rgba(15,23,36,.8);backdrop-filter:blur(6px);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;}
+    .logo{font-weight:700;font-size:22px;color:white;}
+    nav a{color:#dbeafe;margin-left:18px;text-decoration:none;font-weight:600;}
+    nav a.active{border-bottom:3px solid #fff;padding-bottom:4px;}
+    .hero{padding:100px 20px 60px;text-align:center;background:linear-gradient(180deg,rgba(37,99,235,.3),rgba(15,23,36,.95)),url('https://source.unsplash.com/1600x700/?solution,innovation') center/cover;}
+    .hero h1{font-size:64px;font-weight:800;margin:0;background:linear-gradient(90deg,var(--brand1),var(--brand2),var(--brand3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero p{max-width:760px;margin:14px auto 0;color:var(--muted);}
+    .container{max-width:1100px;margin:40px auto;padding:0 20px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+    .card{background:rgba(255,255,255,0.04);padding:24px;border-radius:14px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.4);}
+    .card img{width:72px;margin-bottom:10px;}
+    .card h3{margin:0 0 10px;color:#93c5fd;}
+    footer{background:#0b1120;padding:20px;text-align:center;color:var(--muted);margin-top:40px;}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Team UNIVERSIA</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="problem.html">Problem</a>
-      <a href="solution.html" class="active">Solution</a>
-      <a href="workflow.html">Workflow</a>
-      <a href="demo.html">Demo</a>
-      <a href="impact.html">Impact</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">UNIVERSIA</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="problem.html">Problem</a>
+    <a href="solution.html" class="active">Solution</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="demo.html">Demo</a>
+    <a href="impact.html">Impact</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Our Solution</h1>
-    <p>Automating onboarding with speed, scale & simplicity</p>
-  </section>
+<section class="hero">
+  <h1>Our Solution</h1>
+  <p>UNIVERSIA automates onboarding with AI, analytics, and lightning-fast workflows.</p>
+</section>
 
-  <div class="container">
-    <h2>Key Features</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/automation.png" alt="Automation"/>
-        <h3>Automation</h3>
-        <p>One-click workflows reduce manual steps and speed up processes.</p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/dashboard.png" alt="Dashboard"/>
-        <h3>Admin Dashboard</h3>
-        <p>Centralized view for approvals, metrics, and reports.</p>
-      </div>
-      <div class="card">
-        <img src="https://img.icons8.com/color/96/cloud.png" alt="Cloud"/>
-        <h3>Cloud Ready</h3>
-        <p>Deployable in under 48 hours with serverless architecture.</p>
-      </div>
+<div class="container">
+  <div class="grid">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/automation.png"/>
+      <h3>Automation</h3>
+      <p>End-to-end workflows that replace manual paperwork.</p>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/dashboard.png"/>
+      <h3>Smart Dashboard</h3>
+      <p>Real-time view for students, faculty, and admins.</p>
+    </div>
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/ai.png"/>
+      <h3>AI Assistant</h3>
+      <p>Answers questions, routes approvals, supports scale.</p>
     </div>
   </div>
+</div>
 
-  <footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
+<footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
 </body>
 </html>
