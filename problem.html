@@ -1,69 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Team UNIVERSIA — Problem</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>UNIVERSIA — Problem</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { margin:0; font-family:'Poppins',sans-serif; background:#f9fbfd; color:#111827; }
-    header { background:#2563eb; color:white; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
-    .logo { font-weight:700; font-size:22px; }
-    nav a { color:white; margin-left:20px; text-decoration:none; font-weight:600; }
-    nav a.active { border-bottom:3px solid white; padding-bottom:4px; }
-
-    .hero { background:linear-gradient(rgba(37,99,235,0.7),rgba(37,99,235,0.7)),url('https://source.unsplash.com/1600x700/?problem,thinking') center/cover; color:white; text-align:center; padding:80px 20px; }
-    .hero h1 { font-size:40px; margin:0 0 10px; }
-
-    .container { max-width:1000px; margin:40px auto; padding:20px; }
-    h2 { color:#2563eb; margin-bottom:10px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px; margin-top:20px; }
-    .card { background:white; padding:20px; border-radius:14px; box-shadow:0 4px 14px rgba(0,0,0,0.08); }
-    .card h3 { margin:0 0 10px; color:#2563eb; }
-    ul { padding-left:20px; }
-    footer { text-align:center; padding:20px; background:#1f2937; color:#e5e7eb; margin-top:30px; }
+    :root{--brand1:#60a5fa;--brand2:#2563eb;--brand3:#9333ea;--bg:#0f1724;--muted:#9ca3af;}
+    body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:#e6eefc;}
+    header{background:rgba(15,23,36,.8);backdrop-filter:blur(6px);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;}
+    .logo{font-weight:700;font-size:22px;color:white;}
+    nav a{color:#dbeafe;margin-left:18px;text-decoration:none;font-weight:600;}
+    nav a.active{border-bottom:3px solid #fff;padding-bottom:4px;}
+    .hero{padding:100px 20px 60px;text-align:center;background:linear-gradient(180deg,rgba(37,99,235,.3),rgba(15,23,36,.95)),url('https://source.unsplash.com/1600x700/?problem,challenge') center/cover;}
+    .hero h1{font-size:64px;font-weight:800;margin:0;background:linear-gradient(90deg,var(--brand1),var(--brand2),var(--brand3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero p{max-width:760px;margin:14px auto 0;color:var(--muted);}
+    .container{max-width:1100px;margin:40px auto;padding:0 20px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+    .card{background:rgba(255,255,255,0.04);padding:24px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.4);}
+    .card h3{margin:0 0 10px;color:#93c5fd;}
+    footer{background:#0b1120;padding:20px;text-align:center;color:var(--muted);margin-top:40px;}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Team UNIVERSIA</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="problem.html" class="active">Problem</a>
-      <a href="solution.html">Solution</a>
-      <a href="workflow.html">Workflow</a>
-      <a href="demo.html">Demo</a>
-      <a href="impact.html">Impact</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">UNIVERSIA</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="problem.html" class="active">Problem</a>
+    <a href="solution.html">Solution</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="demo.html">Demo</a>
+    <a href="impact.html">Impact</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Problem Statement</h1>
-    <p>Identifying the core issues we are solving at scale</p>
-  </section>
+<section class="hero">
+  <h1>Problem Statement</h1>
+  <p>Universities struggle with slow, manual, and outdated onboarding systems that frustrate students and overload administrators.</p>
+</section>
 
-  <div class="container">
-    <h2>Challenges</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🚨 Current Gap</h3>
-        <p>Onboarding for students and faculty is slow, confusing, and manual.</p>
-      </div>
-      <div class="card">
-        <h3>📌 Pain Points</h3>
-        <ul>
-          <li>Slow setups & approvals</li>
-          <li>Hard to reproduce processes</li>
-          <li>Lack of automation</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>⏳ Why Now</h3>
-        <p>Universities are rapidly digitizing. Students expect smooth digital-first workflows.</p>
-      </div>
+<div class="container">
+  <div class="grid">
+    <div class="card">
+      <h3>🚨 Current Gap</h3>
+      <p>Onboarding takes weeks instead of hours. No automation, heavy paperwork.</p>
+    </div>
+    <div class="card">
+      <h3>📌 Pain Points</h3>
+      <ul>
+        <li>Confusing processes</li>
+        <li>Hard to track approvals</li>
+        <li>No personalization</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⏳ Why Now</h3>
+      <p>Digital-first universities are essential in 2025. Students expect seamless experiences.</p>
     </div>
   </div>
+</div>
 
-  <footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
+<footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
 </body>
 </html>
