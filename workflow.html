@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team UNIVERSIA - Workflow</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Team UNIVERSIA — Workflow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f9fbfd; color: #222; }
-    header { background: #2563eb; color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
-    header .logo { font-weight: bold; font-size: 20px; }
-    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
-    .container { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    h2 { color: #2563eb; }
-    footer { margin-top: 50px; padding: 15px; text-align: center; font-size: 14px; background: #f1f5f9; color: #555; }
+    body { margin:0; font-family:'Poppins',sans-serif; background:#f9fbfd; color:#111827; }
+    header { background:#2563eb; color:white; padding:14px 28px; display:flex; justify-content:space-between; align-items:center; }
+    .logo { font-weight:700; font-size:22px; }
+    nav a { color:white; margin-left:20px; text-decoration:none; font-weight:600; }
+    nav a.active { border-bottom:3px solid white; padding-bottom:4px; }
+
+    .hero { background:linear-gradient(rgba(37,99,235,0.7),rgba(37,99,235,0.7)),url('https://source.unsplash.com/1600x700/?workflow,process') center/cover; color:white; text-align:center; padding:80px 20px; }
+    .hero h1 { font-size:40px; margin:0 0 10px; }
+
+    .container { max-width:1000px; margin:40px auto; padding:20px; }
+    h2 { color:#2563eb; margin-bottom:20px; text-align:center; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; margin-top:20px; }
+    .card { background:white; padding:20px; border-radius:14px; box-shadow:0 4px 14px rgba(0,0,0,0.08); text-align:center; }
+    .card img { width:80px; margin-bottom:10px; }
+    .card h3 { margin:0 0 10px; color:#2563eb; }
+    footer { text-align:center; padding:20px; background:#1f2937; color:#e5e7eb; margin-top:30px; }
   </style>
 </head>
 <body>
@@ -21,25 +31,43 @@
       <a href="index.html">Home</a>
       <a href="problem.html">Problem</a>
       <a href="solution.html">Solution</a>
-      <a href="workflow.html">Workflow</a>
+      <a href="workflow.html" class="active">Workflow</a>
       <a href="demo.html">Demo</a>
       <a href="impact.html">Impact</a>
     </nav>
   </header>
 
+  <section class="hero">
+    <h1>Workflow</h1>
+    <p>How our system automates onboarding step by step</p>
+  </section>
+
   <div class="container">
-    <h2>Workflow</h2>
-    <p>Our system works in 4 simple steps:</p>
-    <ol>
-      <li>Student signs up → system auto-verifies credentials</li>
-      <li>Admin approves → onboarding checklist generated</li>
-      <li>System auto-assigns resources (ID, courses, services)</li>
-      <li>Student dashboard activated instantly</li>
-    </ol>
+    <h2>4-Step Process</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://img.icons8.com/color/96/add-user-group-man-woman.png" alt="Sign Up"/>
+        <h3>Step 1: Sign Up</h3>
+        <p>Students register and system verifies credentials instantly.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/color/96/approval.png" alt="Approval"/>
+        <h3>Step 2: Approval</h3>
+        <p>Admins approve requests, triggering automated workflows.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/color/96/task.png" alt="Tasks"/>
+        <h3>Step 3: Assign Resources</h3>
+        <p>System allocates IDs, courses, and digital services.</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/color/96/dashboard.png" alt="Dashboard"/>
+        <h3>Step 4: Dashboard Live</h3>
+        <p>Students get a personalized dashboard instantly.</p>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    © 2025 Team UNIVERSIA | Hackathon Project
-  </footer>
+  <footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
 </body>
 </html>
