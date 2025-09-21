@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Workflow</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand"><div class="logo">PHX</div><div><div style="font-weight:800">Team Phoenix</div><div class="small-muted">Workflow</div></div></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a><a href="workflow.html">Workflow</a><a href="demo.html">Demo</a><a href="impact.html">Impact</a>
+      </div>
+      <div class="toggle" id="themeToggleW">🌗 <span class="small-muted">Theme</span></div>
+    </div>
+
+    <div class="page">
+      <div class="card">
+        <h2>GitHub-first Workflow</h2>
+        <p class="lead">Everything happens in the repo — issues, PRs, CI, and release artifacts. Judges can peek at your engineering process in seconds.</p>
+
+        <div style="margin-top:12px" class="workflow-cards">
+          <div class="step">
+            <h5>Issue → Plan</h5>
+            <div class="small-muted">Capture user need, attach acceptance criteria</div>
+          </div>
+          <div class="step">
+            <h5>Feature branch</h5>
+            <div class="small-muted">feature/awesome → small commits & descriptive messages</div>
+          </div>
+          <div class="step">
+            <h5>PR</h5>
+            <div class="small-muted">Code review, changes requested, merge when green</div>
+          </div>
+          <div class="step">
+            <h5>CI</h5>
+            <div class="small-muted">Run tests, build, produce badge</div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px">
+          <h4>Example GitHub Actions (show this during demo)</h4>
+          <div class="code">
+            name: CI<br>
+            on: [push, pull_request]<br>
+            jobs: <br>
+            &nbsp;&nbsp;backend-tests: ...<br>
+            &nbsp;&nbsp;frontend-build: ...
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="small-muted">
+          Tip: Have one PR that fixes a small bug handy — open it during demo to show reviews & CI green checks.
+        </div>
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+    <div class="footer"><div class="small-muted">Team Phoenix • Workflow</div><div></div></div>
+  </div>
+
+<script>
+document.getElementById('themeToggleW').addEventListener('click', ()=>{
+  const root = document.documentElement;
+  root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+});
+</script>
+</body>
+</html>
+

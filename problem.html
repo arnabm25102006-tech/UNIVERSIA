@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Problem — Hackathon Pitch</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand"><div class="logo">PHX</div><div><div style="font-weight:800">Team Phoenix</div><div class="small-muted">Problem</div></div></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="problem.html">Problem</a>
+        <a href="solution.html">Solution</a>
+        <a href="workflow.html">Workflow</a>
+        <a href="demo.html">Demo</a>
+        <a href="impact.html">Impact</a>
+      </div>
+      <div class="toggle" id="themeToggleP">🌗 <span class="small-muted">Theme</span></div>
+    </div>
+
+    <div class="page">
+      <div class="section">
+        <div class="left">
+          <div class="card">
+            <h2 style="margin:0">Problem Statement</h2>
+            <p class="lead">(One-liner) — Replace with your hackathon's exact problem</p>
+            <ul style="color:var(--muted)">
+              <li><strong>Who</strong>: Target users</li>
+              <li><strong>What</strong>: The gap we close</li>
+              <li><strong>Why now</strong>: urgency or trend</li>
+            </ul>
+
+            <div style="margin-top:12px">
+              <h4>Constraints (judges care):</h4>
+              <ul style="color:var(--muted)">
+                <li>Deployable MVP in ~48 hours</li>
+                <li>Reproducible demo (no flaky infra)</li>
+                <li>Clear impact metrics</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <h3>Pain points</h3>
+            <ol style="color:var(--muted)">
+              <li>Existing tools are slow to set up</li>
+              <li>Hard to reproduce for judges</li>
+              <li>Lack of automation & tests</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="card">
+            <div style="font-weight:700">Target metric</div>
+            <div class="small-muted" style="margin-top:8px">One clear metric to measure impact</div>
+            <div style="margin-top:12px;font-size:22px;font-weight:800;color:var(--accent-color)">Faster onboarding by 3x</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+    <div class="footer"><div class="small-muted">Team Phoenix • Problem</div><div></div></div>
+  </div>
+
+<script>
+document.getElementById('themeToggleP').addEventListener('click', ()=>{
+  const root = document.documentElement;
+  const cur = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  root.setAttribute('data-theme', cur);
+});
+</script>
+</body>
+</html>
+

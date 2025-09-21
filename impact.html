@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Impact & Roadmap</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand"><div class="logo">PHX</div><div><div style="font-weight:800">Team Phoenix</div><div class="small-muted">Impact</div></div></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a><a href="workflow.html">Workflow</a><a href="demo.html">Demo</a><a href="impact.html">Impact</a>
+      </div>
+      <div class="toggle" id="themeToggleI">🌗 <span class="small-muted">Theme</span></div>
+    </div>
+
+    <div class="page">
+      <div class="card">
+        <h2>Impact & Why This Wins</h2>
+        <p class="lead">Concise reasons judges will love — reproducibility, measurable impact, and clear roadmap.</p>
+
+        <ul style="color:var(--muted)">
+          <li><strong>Reproducible:</strong> Docker + README + tests let judges run the app quickly.</li>
+          <li><strong>Credible:</strong> Automated CI shows engineering maturity.</li>
+          <li><strong>Valuable:</strong> Clear metric and user story for impact.</li>
+        </ul>
+
+        <div style="margin-top:12px">
+          <h4>Roadmap (post-hackathon)</h4>
+          <ol style="color:var(--muted)">
+            <li>Integrate auth and database</li>
+            <li>Deploy to managed host + custom domain</li>
+            <li>Implement analytics & growth loop</li>
+          </ol>
+        </div>
+
+        <div style="margin-top:12px">
+          <h4>Closing pitch</h4>
+          <div class="code">We deliver an MVP that is reproducible, tested, and ready to scale — judged on impact, polish, and engineering rigour.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+    <div class="footer"><div class="small-muted">Team Phoenix • Impact</div><div></div></div>
+  </div>
+
+<script>
+document.getElementById('themeToggleI').addEventListener('click', ()=>{
+  const root = document.documentElement;
+  root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Solution</title><link rel="stylesheet" href="style.css"/></head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <div class="brand"><div class="logo">PHX</div><div><div style="font-weight:800">Team Phoenix</div><div class="small-muted">Solution</div></div></div>
+      <div class="navlinks">
+        <a href="index.html">Home</a><a href="problem.html">Problem</a><a href="solution.html">Solution</a><a href="workflow.html">Workflow</a><a href="demo.html">Demo</a><a href="impact.html">Impact</a>
+      </div>
+      <div class="toggle" id="themeToggleS">🌗 <span class="small-muted">Theme</span></div>
+    </div>
+
+    <div class="page">
+      <div class="section">
+        <div class="left">
+          <div class="card">
+            <h2>Our Approach</h2>
+            <p class="lead">GitHub-centered development, reproducible containers, and automated testing — from idea to demo in under 48 hours.</p>
+
+            <div style="margin-top:12px" class="workflow-cards">
+              <div class="step">
+                <h5>1. Repo & Structure</h5>
+                <div class="small-muted">Clean README, examples, and template issues</div>
+              </div>
+              <div class="step">
+                <h5>2. Branching & PRs</h5>
+                <div class="small-muted">feature/* → staging → main with required reviews</div>
+              </div>
+              <div class="step">
+                <h5>3. CI / CD</h5>
+                <div class="small-muted">Tests → Build → Deploy (or serve static demo)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:14px">
+            <h3>Core Features (MVP)</h3>
+            <ul style="color:var(--muted)">
+              <li>Fast onboarding + one-click demo</li>
+              <li>Clear metrics & logging for judges</li>
+              <li>Polished UI with responsive design</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="card">
+            <div style="font-weight:700">Tech stack</div>
+            <div class="small-muted">Pick what you’ll actually demo</div>
+            <div style="margin-top:12px" class="code">
+              Backend: FastAPI<br>Frontend: React + Vite<br>CI: GitHub Actions<br>Deployment: Docker / Static host
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <div style="font-weight:700">Demo-ready checklist</div>
+            <ul style="color:var(--muted)">
+              <li>One-click build & run</li>
+              <li>Sample data & tests</li>
+              <li>Screenshot fallback video</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="height:40px"></div>
+    <div class="footer"><div class="small-muted">Team Phoenix • Solution</div><div></div></div>
+  </div>
+
+<script>
+document.getElementById('themeToggleS').addEventListener('click', ()=>{
+  const root = document.documentElement;
+  root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+});
+</script>
+</body>
+</html>
+

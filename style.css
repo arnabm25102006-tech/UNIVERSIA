@@ -1,0 +1,110 @@
+:root{
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: linear-gradient(90deg,#4f46e5,#06b6d4);
+  --glass: rgba(255,255,255,0.6);
+  --glass-2: rgba(255,255,255,0.4);
+  --shadow: 0 6px 24px rgba(16,24,40,0.08);
+  --radius: 14px;
+  --glass-border: rgba(15,23,42,0.04);
+  --text: #0f172a;
+  --link: #1d4ed8;
+  --code-bg: #0b1220;
+  --code-text: #e6eef8;
+  --accent-color: #4f46e5;
+  --glass-accent: rgba(79,70,229,0.08);
+}
+
+[data-theme="dark"]{
+  --bg: #071025;
+  --card: rgba(10,13,18,0.56);
+  --muted: #9aa6bf;
+  --accent: linear-gradient(90deg,#06b6d4,#8b5cf6);
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --shadow: 0 8px 30px rgba(2,6,23,0.65);
+  --radius: 12px;
+  --glass-border: rgba(255,255,255,0.03);
+  --text: #e6eef8;
+  --link: #7dd3fc;
+  --code-bg: #071025;
+  --code-text: #bfe9ff;
+  --accent-color: #06b6d4;
+  --glass-accent: rgba(6,182,212,0.06);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none}
+.container{max-width:1100px;margin:24px auto;padding:20px}
+
+/* Navbar */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.35), transparent);
+  padding:10px;border-radius:12px;box-shadow:var(--shadow);backdrop-filter: blur(8px);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:52px;height:52px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:0 6px 18px rgba(79,70,229,0.16)
+}
+.navlinks{display:flex;gap:14px;align-items:center}
+.navlinks a{padding:8px 12px;border-radius:10px;font-weight:600}
+.cta{background:var(--accent);color:white;padding:8px 14px;border-radius:12px;display:inline-flex;gap:8px;align-items:center}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 360px;gap:24px;padding:28px;margin-top:18px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:18px}.hero-right{display:none}}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border:1px solid var(--glass-border)}
+.h1{font-size:28px;margin:8px 0 6px}
+.lead{color:var(--muted);margin:12px 0}
+
+/* Feature grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(1,1fr)}}
+.feature{padding:16px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);border:1px solid var(--glass-border)}
+.feature h4{margin:0}
+
+/* code block visuals */
+.code{
+  background:var(--code-bg);
+  color:var(--code-text);
+  padding:12px;border-radius:10px;overflow:auto;font-family:SFMono-Regular,Consolas,monospace;font-size:13px;
+  box-shadow: inset 0 -16px 40px rgba(2,6,23,0.2);
+}
+
+/* navigation footer */
+.footer{margin-top:28px;display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+
+/* small helpers */
+.kv{display:flex;gap:10px;align-items:center}
+.badge{padding:6px 10px;border-radius:999px;background:var(--glass-accent);font-weight:600;color:var(--accent-color)}
+
+/* page content layout */
+.page{margin-top:18px}
+.section{display:flex;gap:18px;align-items:flex-start}
+.left{flex:1}
+.right{width:360px}
+
+/* Demo UI small */
+.input,textarea,button{font-family:inherit;padding:10px;border-radius:8px;border:1px solid var(--glass-border);background:transparent;color:var(--text)}
+.btn{padding:10px 14px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;font-weight:700}
+.small{font-size:13px;color:var(--muted)}
+
+/* theme toggle */
+.toggle{display:inline-flex;align-items:center;gap:10px;cursor:pointer;padding:6px 8px;border-radius:10px;background:var(--glass-2);border:1px solid var(--glass-border)}
+.small-muted{font-size:12px;color:var(--muted)}
+
+/* nice cards in workflow */
+.workflow-cards{display:flex;gap:12px;flex-wrap:wrap}
+.step{flex:1;min-width:180px;padding:14px;border-radius:12px;background:linear-gradient(180deg,var(--card),transparent);border:1px solid var(--glass-border);box-shadow:var(--shadow)}
+.step h5{margin:0 0 8px}
+
+/* responsive for small devices */
+@media(max-width:640px){
+  .navlinks{display:none}
+  .hero{grid-template-columns:1fr}
+  .right{display:none}
+}
+
