@@ -1,113 +1,42 @@
-<!doctype html>
-<html lang="en" data-theme="light">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Demo</title><link rel="stylesheet" href="style.css"/></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team UNIVERSIA - Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f9fbfd; color: #222; }
+    header { background: #2563eb; color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+    header .logo { font-weight: bold; font-size: 20px; }
+    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
+    .container { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    h2 { color: #2563eb; }
+    iframe { width: 100%; height: 400px; border: none; margin-top: 20px; border-radius: 8px; }
+    footer { margin-top: 50px; padding: 15px; text-align: center; font-size: 14px; background: #f1f5f9; color: #555; }
+  </style>
+</head>
 <body>
+  <header>
+    <div class="logo">Team UNIVERSIA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="problem.html">Problem</a>
+      <a href="solution.html">Solution</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="demo.html">Demo</a>
+      <a href="impact.html">Impact</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <div class="nav">
-      <div class="brand"><div class="logo">PHX</div><div><div style="font-weight:800">Team Phoenix</div><div class="small-muted">Interactive Demo</div></div></div>
-      <div class="navlinks">
-        <a href="index.html">Home</a><a href="demo.html">Demo</a><a href="workflow.html">Workflow</a><a href="impact.html">Impact</a>
-      </div>
-      <div class="toggle" id="themeToggleD">🌗 <span class="small-muted">Theme</span></div>
-    </div>
-
-    <div class="page">
-      <div class="section">
-        <div class="left">
-          <div class="card">
-            <h2>Live Demo (client-side)</h2>
-            <p class="lead">Add a demo item — this simulates a POST to your backend and shows instant UI update. Great for offline presentations.</p>
-
-            <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
-              <input id="title" class="input" placeholder="Title (e.g., Judge Demo)" />
-              <button id="addBtn" class="btn">Add</button>
-            </div>
-
-            <div id="items" style="margin-top:16px"></div>
-          </div>
-
-          <div class="card" style="margin-top:12px">
-            <h4>Demo actions</h4>
-            <ol style="color:var(--muted)">
-              <li>Type a title and click Add</li>
-              <li>Show network console (simulate real API)</li>
-              <li>Open a "fake PR" drawer to show commit message</li>
-            </ol>
-            <div style="margin-top:10px">
-              <button id="fakePr" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06)">Open Example PR</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="right">
-          <div class="card" id="prCard" style="display:none">
-            <div style="font-weight:700">PR: Fix demo typo</div>
-            <div class="small-muted" style="margin-top:8px">Commit: fix(ui): polish demo card</div>
-            <div style="margin-top:10px" class="code">
-              - Added smoother animations<br>- Updated README example
-            </div>
-            <div style="margin-top:12px">
-              <button id="merge" class="btn">Merge PR</button>
-            </div>
-          </div>
-
-          <div class="card" style="margin-top:12px">
-            <div style="font-weight:700">CI Status</div>
-            <div style="margin-top:8px" class="badge" id="ciBadge">--</div>
-            <div class="small-muted" style="margin-top:10px">Trigger: Add item → run tests (simulated)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="height:40px"></div>
-    <div class="footer"><div class="small-muted">Team Phoenix • Demo</div><div></div></div>
+    <h2>Demo</h2>
+    <p>Watch our live demo here:</p>
+    <!-- Replace YouTube link with your demo link -->
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
   </div>
 
-<script>
-(function(){
-  const itemsEl = document.getElementById('items');
-  const title = document.getElementById('title');
-  const addBtn = document.getElementById('addBtn');
-  const ciBadge = document.getElementById('ciBadge');
-  const prCard = document.getElementById('prCard');
-  const fakePr = document.getElementById('fakePr');
-  const merge = document.getElementById('merge');
-
-  function render(){
-    const list = JSON.parse(localStorage.getItem('demoItems')||'[]');
-    itemsEl.innerHTML = list.length ? list.map(it=>`
-      <div style="padding:10px;border-radius:10px;margin-bottom:8px;background:linear-gradient(180deg,var(--card),transparent);border:1px solid var(--glass-border)">
-        <div style="font-weight:700">${it.title}</div>
-        <div style="color:var(--muted);margin-top:6px">${it.desc}</div>
-      </div>
-    `).join('') : '<div class="small-muted">No demo items yet — add one</div>';
-  }
-
-  addBtn.addEventListener('click', ()=>{
-    const t = title.value.trim() || 'Demo Item';
-    const list = JSON.parse(localStorage.getItem('demoItems')||'[]');
-    list.unshift({title:t,desc:'Added locally for demo.'});
-    localStorage.setItem('demoItems', JSON.stringify(list));
-    title.value = '';
-    render();
-    // simulate CI run
-    ciBadge.textContent = 'running...';
-    setTimeout(()=>ciBadge.textContent='passing ✓', 1000);
-  });
-
-  fakePr.addEventListener('click', ()=>{ prCard.style.display='block'; });
-  merge.addEventListener('click', ()=>{ prCard.style.display='none'; alert('PR merged — demo change applied'); });
-
-  // theme toggle
-  document.getElementById('themeToggleD').addEventListener('click', ()=>{
-    const root = document.documentElement;
-    root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
-  });
-
-  render();
-})();
-</script>
+  <footer>
+    © 2025 Team UNIVERSIA | Hackathon Project
+  </footer>
 </body>
 </html>
-
