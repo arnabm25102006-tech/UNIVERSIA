@@ -1,24 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team UNIVERSIA - Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Team UNIVERSIA — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f9fbfd; color: #222; }
-    header { background: #2563eb; color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
-    header .logo { font-weight: bold; font-size: 20px; }
-    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
-    .container { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align: center; }
-    h1 { color: #2563eb; }
-    footer { margin-top: 50px; padding: 15px; text-align: center; font-size: 14px; background: #f1f5f9; color: #555; }
+    :root {
+      --brand:#2563eb;
+      --brand-dark:#1e40af;
+      --bg:#f9fbfd;
+      --text:#111827;
+      --muted:#6b7280;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box;}
+    body {
+      margin:0;
+      font-family:'Poppins', sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    header {
+      position:sticky; top:0; z-index:10;
+      background:var(--brand);
+      color:white; padding:14px 28px;
+      display:flex; justify-content:space-between; align-items:center;
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    }
+    .logo { font-weight:700; font-size:22px; letter-spacing:0.8px; }
+    nav a {
+      color:white; text-decoration:none; margin-left:20px;
+      font-weight:600; transition:0.3s;
+    }
+    nav a:hover { color:#dbeafe; }
+    nav a.active { border-bottom:3px solid white; padding-bottom:4px; }
+
+    /* Hero */
+    .hero {
+      background:linear-gradient(rgba(37,99,235,0.8), rgba(37,99,235,0.8)), url('https://source.unsplash.com/1600x700/?technology,hackathon') center/cover no-repeat;
+      color:white; text-align:center; padding:80px 20px;
+    }
+    .hero h1 { font-size:42px; margin:0 0 12px; }
+    .hero p { font-size:18px; opacity:0.9; }
+
+    /* Content */
+    .container {
+      max-width:1100px; margin:40px auto; padding:20px;
+    }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+    .card {
+      background:var(--card); border-radius:14px; padding:20px;
+      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      text-align:center; transition:transform 0.2s;
+    }
+    .card:hover { transform:translateY(-5px); }
+    .card img { width:100%; max-height:160px; object-fit:cover; border-radius:10px; margin-bottom:14px; }
+    .card h3 { color:var(--brand); margin-bottom:8px; }
+
+    footer {
+      margin-top:40px; text-align:center; padding:20px;
+      background:#1f2937; color:#e5e7eb; font-size:14px;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">Team UNIVERSIA</div>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="problem.html">Problem</a>
       <a href="solution.html">Solution</a>
       <a href="workflow.html">Workflow</a>
@@ -27,14 +77,32 @@
     </nav>
   </header>
 
-  <div class="container">
+  <section class="hero">
     <h1>Welcome to Team UNIVERSIA 🚀</h1>
-    <p>We are building a smarter, faster onboarding platform to simplify university processes.</p>
-    <p>Explore our Problem, Solution, Workflow, Demo, and Impact.</p>
+    <p>Building smarter, faster, scalable onboarding for universities worldwide</p>
+  </section>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?students,team" alt="Students" />
+        <h3>Our Mission</h3>
+        <p>To automate onboarding and enhance digital university experiences with speed and simplicity.</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?technology,innovation" alt="Technology" />
+        <h3>Our Innovation</h3>
+        <p>Smart workflows, automation, and reproducible systems that judges can trust in hackathons.</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x250/?success,impact" alt="Impact" />
+        <h3>Our Impact</h3>
+        <p>Reducing admin workload, boosting student satisfaction, and enabling digital-first campuses.</p>
+      </div>
+    </div>
   </div>
 
-  <footer>
-    © 2025 Team UNIVERSIA | Hackathon Project
-  </footer>
+  <footer>© 2025 Team UNIVERSIA | Hackathon Project</footer>
 </body>
 </html>
+  
