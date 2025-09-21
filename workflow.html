@@ -1,69 +1,45 @@
-<!doctype html>
-<html lang="en" data-theme="light">
-<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Workflow</title><link rel="stylesheet" href="style.css"/></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team UNIVERSIA - Workflow</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f9fbfd; color: #222; }
+    header { background: #2563eb; color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+    header .logo { font-weight: bold; font-size: 20px; }
+    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
+    .container { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    h2 { color: #2563eb; }
+    footer { margin-top: 50px; padding: 15px; text-align: center; font-size: 14px; background: #f1f5f9; color: #555; }
+  </style>
+</head>
 <body>
+  <header>
+    <div class="logo">Team UNIVERSIA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="problem.html">Problem</a>
+      <a href="solution.html">Solution</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="demo.html">Demo</a>
+      <a href="impact.html">Impact</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <div class="nav">
-      <div class="brand"><div class="logo">UNV</div><div><div style="font-weight:800">Team UNIVERSIA</div><div class="small-muted">Workflow</div></div></div>
-      <div class="navlinks">
-        <a href="index.html">Home</a><a href="workflow.html">Workflow</a><a href="demo.html">Demo</a><a href="impact.html">Impact</a>
-      </div>
-      <div class="toggle" id="themeToggleW">🌗 <span class="small-muted">Theme</span></div>
-    </div>
-
-    <div class="page">
-      <div class="card">
-        <h2>GitHub-first Workflow</h2>
-        <p class="lead">Everything happens in the repo — issues, PRs, CI, and release artifacts. Judges can peek at your engineering process in seconds.</p>
-
-        <div style="margin-top:12px" class="workflow-cards">
-          <div class="step">
-            <h5>Issue → Plan</h5>
-            <div class="small-muted">Capture user need, attach acceptance criteria</div>
-          </div>
-          <div class="step">
-            <h5>Feature branch</h5>
-            <div class="small-muted">feature/awesome → small commits & descriptive messages</div>
-          </div>
-          <div class="step">
-            <h5>PR</h5>
-            <div class="small-muted">Code review, changes requested, merge when green</div>
-          </div>
-          <div class="step">
-            <h5>CI</h5>
-            <div class="small-muted">Run tests, build, produce badge</div>
-          </div>
-        </div>
-
-        <div style="margin-top:16px">
-          <h4>Example GitHub Actions (show this during demo)</h4>
-          <div class="code">
-            name: CI<br>
-            on: [push, pull_request]<br>
-            jobs: <br>
-            &nbsp;&nbsp;backend-tests: ...<br>
-            &nbsp;&nbsp;frontend-build: ...
-          </div>
-        </div>
-
-        <div style="margin-top:12px" class="small-muted">
-          Tip: Have one PR that fixes a small bug handy — open it during demo to show reviews & CI green checks.
-        </div>
-      </div>
-    </div>
-
-    <div style="height:40px"></div>
-    <div class="footer"><div class="small-muted">Team UNIVERSIA• Workflow</div><div></div></div>
+    <h2>Workflow</h2>
+    <p>Our system works in 4 simple steps:</p>
+    <ol>
+      <li>Student signs up → system auto-verifies credentials</li>
+      <li>Admin approves → onboarding checklist generated</li>
+      <li>System auto-assigns resources (ID, courses, services)</li>
+      <li>Student dashboard activated instantly</li>
+    </ol>
   </div>
 
-<script>
-document.getElementById('themeToggleW').addEventListener('click', ()=>{
-  const root = document.documentElement;
-  root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
-});
-</script>
+  <footer>
+    © 2025 Team UNIVERSIA | Hackathon Project
+  </footer>
 </body>
 </html>
-
-
-
