@@ -23,3 +23,92 @@
     p.lead { color:var(--muted); margin-bottom:20px; text-align:center; }
 
     iframe { width:100%; height:400px; border:none; border-radius:10px; margin:20px 0; }
+
+    .btn { display:inline-block; padding:12px 22px; border-radius:8px; background:var(--brand); color:white; text-decoration:none; font-weight:600; transition:0.2s; }
+    .btn:hover { background:#1d4ed8; }
+
+    /* demo form */
+    .demo-form { margin-top:20px; padding:20px; background:#f3f6fb; border-radius:10px; }
+    label { display:block; margin:10px 0 5px; font-weight:600; }
+    input, select { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; margin-bottom:12px; }
+    .progress { height:14px; background:#e5e7eb; border-radius:8px; overflow:hidden; margin:12px 0 20px; }
+    .progress-bar { height:100%; width:0%; background:var(--brand); transition:width 0.4s ease; }
+
+    footer { text-align:center; padding:18px; color:var(--muted); margin-top:28px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Team UNIVERSIA</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="problem.html">Problem</a>
+      <a href="solution.html">Solution</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="demo.html" class="active">Demo</a>
+      <a href="impact.html">Impact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <h1>Live Demo</h1>
+    <p class="lead">Try out a mini interactive onboarding flow — see how fast and smooth it is!</p>
+
+    <!-- Interactive Form -->
+    <div class="demo-form">
+      <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+
+      <form id="onboardingForm">
+        <label for="name">👤 Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+
+        <label for="email">📧 Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+        <label for="role">🎓 Role</label>
+        <select id="role" name="role" required>
+          <option value="">Select role</option>
+          <option value="student">Student</option>
+          <option value="faculty">Faculty</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <button type="submit" class="btn">🚀 Submit</button>
+      </form>
+
+      <p id="result" style="margin-top:15px;font-weight:bold;color:green;display:none;">✅ Onboarding complete!</p>
+    </div>
+
+    <!-- Optional Video -->
+    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+
+    <!-- External Link -->
+    <div style="text-align:center; margin-top:20px;">
+      <a href="https://your-deployed-link.com" target="_blank" class="btn">🌐 Try Full Project</a>
+    </div>
+  </main>
+
+  <footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
+
+  <script>
+    const form = document.getElementById("onboardingForm");
+    const bar = document.getElementById("progress-bar");
+    const result = document.getElementById("result");
+
+    form.addEventListener("input", () => {
+      let filled = 0;
+      const inputs = form.querySelectorAll("input, select");
+      inputs.forEach(i => { if(i.value.trim() !== "") filled++; });
+      const percent = Math.floor((filled / inputs.length) * 100);
+      bar.style.width = percent + "%";
+    });
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      bar.style.width = "100%";
+      result.style.display = "block";
+      setTimeout(()=>alert("Demo complete! 🎉"), 500);
+    });
+  </script>
+</body>
+</html>
