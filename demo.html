@@ -3,354 +3,187 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Team UNIVERSIA — Demo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Chart.js for pretty charts -->
+  <title>UNIVERSIA — Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <style>
     :root{
-      --brand:#2563eb; --brand-dark:#1e40af;
-      --bg:#f9fbfd; --card:#ffffff; --text:#111827; --muted:#6b7280; --soft:#eef2ff;
+      --brand1:#60a5fa; --brand2:#2563eb; --brand3:#9333ea;
+      --bg:#0f1724; --card:#111827; --muted:#9ca3af;
     }
-    *{box-sizing:border-box}
-    body{ margin:0; font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); }
-    header{ position:sticky; top:0; z-index:10; background:var(--brand); color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; box-shadow:0 4px 10px rgba(0,0,0,.15); }
-    .logo{ font-weight:700; font-size:20px; letter-spacing:.5px; }
-    nav a{ color:#fff; text-decoration:none; margin-left:18px; font-weight:600; opacity:.95; }
-    nav a.active{ border-bottom:3px solid #fff; padding-bottom:4px; }
+    body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:#e6eefc;}
+    header{background:rgba(15,23,36,.8);backdrop-filter:blur(6px);
+      padding:14px 28px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;}
+    .logo{font-weight:700;font-size:22px;color:white;}
+    nav a{color:#dbeafe;margin-left:18px;text-decoration:none;font-weight:600;}
+    nav a.active{border-bottom:3px solid #fff;padding-bottom:4px;}
 
-    .controls{ display:flex; align-items:center; gap:10px; }
-    .toggle{ cursor:pointer; padding:8px 12px; border-radius:8px; background:rgba(255,255,255,.15); color:#fff; border:0; font-weight:600; }
+    /* Hero */
+    .hero{padding:100px 20px 60px;text-align:center;
+      background:linear-gradient(180deg,rgba(37,99,235,.3),rgba(15,23,36,.95)),
+      url('https://source.unsplash.com/1600x700/?demo,technology') center/cover;}
+    .hero h1{font-size:64px;font-weight:800;margin:0;
+      background:linear-gradient(90deg,var(--brand1),var(--brand2),var(--brand3));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero p{max-width:760px;margin:14px auto 0;color:var(--muted);}
 
-    .hero{ background:linear-gradient(rgba(37,99,235,.75),rgba(37,99,235,.75)), url('https://source.unsplash.com/1600x700/?demo,technology') center/cover; color:#fff; text-align:center; padding:72px 20px; }
-    .hero h1{ margin:0 0 10px; font-size:40px; }
+    .container{max-width:1150px;margin:40px auto;padding:0 20px;}
+    .row{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;}
+    @media(max-width:980px){.row{grid-template-columns:1fr;}}
 
-    .container{ max-width:1100px; margin:34px auto; padding:0 18px; }
-    .row{ display:grid; grid-template-columns:1.1fr .9fr; gap:20px; }
-    @media (max-width:980px){ .row{ grid-template-columns:1fr; } }
+    .panel{background:var(--card);border-radius:14px;padding:20px;
+      box-shadow:0 6px 18px rgba(0,0,0,.5);}
+    .panel h2{margin:0 0 8px;background:linear-gradient(90deg,var(--brand1),var(--brand2));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .panel h3{margin:0 0 6px;color:#93c5fd;}
 
-    .panel{ background:var(--card); border-radius:14px; padding:20px; box-shadow:0 6px 18px rgba(17,24,39,.08); }
-    .panel h2{ margin:0 0 4px; color:var(--brand); }
+    /* Form */
+    label{display:block;margin:10px 0 6px;font-weight:600;}
+    input,select{width:100%;padding:10px;border:1px solid #374151;border-radius:8px;
+      background:#0f1724;color:#e6eefc;}
+    .btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:700;
+      background:linear-gradient(90deg,var(--brand2),var(--brand3));color:white;border:none;cursor:pointer;}
+    .btn:hover{opacity:.9;}
+    .progress{height:14px;background:#1f2937;border-radius:999px;overflow:hidden;margin:12px 0 20px;}
+    .bar{height:100%;width:0;background:linear-gradient(90deg,var(--brand1),var(--brand2));transition:.35s;}
 
-    /* form */
-    label{ display:block; margin:10px 0 6px; font-weight:600; }
-    input, select{ width:100%; padding:10px; border:1px solid #d1d5db; border-radius:8px; }
-    .btn{ display:inline-block; padding:12px 18px; border-radius:10px; background:var(--brand); color:#fff; text-decoration:none; font-weight:700; border:0; cursor:pointer; }
-    .btn:hover{ background:var(--brand-dark); }
-    .progress{ height:14px; background:#e5e7eb; border-radius:999px; overflow:hidden; margin:12px 0 16px; }
-    .bar{ height:100%; width:0%; background:var(--brand); transition:width .35s ease; }
+    /* Dashboard */
+    .hidden{display:none!important;}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;}
+    .col-6{grid-column:span 6;} .col-12{grid-column:span 12;}
+    @media(max-width:980px){.col-6{grid-column:span 12;}}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px;}
+    @media(max-width:980px){.kpis{grid-template-columns:repeat(2,1fr);}}
+    .kpi{background:rgba(255,255,255,.05);border-radius:12px;padding:14px;text-align:center;}
+    .kpi h3{margin:6px 0 0;color:#bfdbfe;}
 
-    /* dashboard */
-    .hidden{ display:none !important; }
-    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:16px; }
-    .col-8{ grid-column:span 8; } .col-4{ grid-column:span 4; }
-    .col-6{ grid-column:span 6; } .col-12{ grid-column:span 12; }
-    @media (max-width:980px){ .col-8,.col-4,.col-6{ grid-column:span 12; } }
+    /* Chat */
+    .chat{display:flex;flex-direction:column;height:420px;}
+    .chat-log{flex:1;overflow:auto;padding:10px;background:#0b1120;border-radius:12px;}
+    .msg{margin:8px 0;max-width:85%;padding:10px 12px;border-radius:12px;line-height:1.4;}
+    .me{background:#1e3a8a;margin-left:auto;}
+    .bot{background:#1f2937;}
+    .chat-input{display:flex;gap:8px;margin-top:10px;}
+    .chat-input input{flex:1;background:#111827;color:#e6eefc;border:1px solid #374151;padding:10px;border-radius:8px;}
 
-    .kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:12px; }
-    @media (max-width:980px){ .kpis{ grid-template-columns:repeat(2,1fr); } }
-    .kpi{ background:var(--soft); border-radius:12px; padding:14px; text-align:center; }
-    .kpi h3{ margin:4px 0 0; }
+    /* Impact Calc */
+    .calc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+    @media(max-width:600px){.calc-grid{grid-template-columns:1fr;}}
+    .muted{color:var(--muted);}
 
-    /* chat widget */
-    .chat{ display:flex; flex-direction:column; height:420px; }
-    .chat-log{ flex:1; overflow:auto; padding:10px; background:#f3f4f6; border-radius:12px; }
-    .msg{ margin:8px 0; max-width:85%; padding:10px 12px; border-radius:12px; line-height:1.35; }
-    .me{ background:#dbeafe; margin-left:auto; }
-    .bot{ background:#e5e7eb; }
-    .chat-input{ display:flex; gap:8px; margin-top:10px; }
-    .chat-input input{ flex:1; }
-
-    /* impact calc */
-    .calc-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
-    @media (max-width:600px){ .calc-grid{ grid-template-columns:1fr; } }
-    .muted{ color:var(--muted); }
-
-    /* dark mode */
-    body.dark{ --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#9ca3af; --soft:#111b33; }
-    body.dark header{ background:#0b3aa8; }
-    body.dark .hero{ background:linear-gradient(rgba(11,58,168,.85),rgba(11,58,168,.85)), url('https://source.unsplash.com/1600x700/?technology,code'); }
-    body.dark input, body.dark select{ background:#0b1220; color:#e5e7eb; border-color:#1f2a44; }
-    body.dark .chat-log{ background:#0b1220; }
-    body.dark .me{ background:#183a8a; color:#e5e7eb; }
-    body.dark .bot{ background:#101827; color:#e5e7eb; }
+    footer{background:#0b1120;padding:20px;text-align:center;color:var(--muted);margin-top:40px;}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Team UNIVERSIA</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="problem.html">Problem</a>
-      <a href="solution.html">Solution</a>
-      <a href="workflow.html">Workflow</a>
-      <a href="demo.html" class="active">Demo</a>
-      <a href="impact.html">Impact</a>
-    </nav>
-    <div class="controls">
-      <button id="darkToggle" class="toggle" aria-pressed="false">🌙 Dark</button>
-    </div>
-  </header>
+<header>
+  <div class="logo">UNIVERSIA</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="problem.html">Problem</a>
+    <a href="solution.html">Solution</a>
+    <a href="workflow.html">Workflow</a>
+    <a href="demo.html" class="active">Demo</a>
+    <a href="impact.html">Impact</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Live Demo</h1>
-    <p>Experience the end-to-end flow: Onboarding → Smart Dashboard</p>
-  </section>
+<section class="hero">
+  <h1>Live Demo</h1>
+  <p>Onboarding → Dashboard → Analytics → AI Assistant</p>
+</section>
 
-  <main class="container">
-    <!-- ONBOARDING ROW -->
-    <div id="row-onboarding" class="row">
-      <section class="panel">
-        <h2>Onboarding</h2>
-        <p class="muted" style="margin:0 0 8px">Fill 3 fields to continue</p>
-        <div class="progress"><div id="bar" class="bar"></div></div>
-        <form id="form">
-          <label for="name">👤 Full Name</label>
-          <input id="name" placeholder="e.g., A. Manna" required />
-          <label for="email">📧 Email</label>
-          <input id="email" type="email" placeholder="name@university.edu" required />
-          <label for="role">🎓 Role</label>
-          <select id="role" required>
-            <option value="">Select role</option>
-            <option value="Student">Student</option>
-            <option value="Faculty">Faculty</option>
-            <option value="Admin">Admin</option>
-          </select>
-          <div style="display:flex; gap:10px; margin-top:12px;">
-            <button class="btn" type="submit">🚀 Continue</button>
-            <a class="btn" href="https://your-deployed-link.com" target="_blank" style="background:#10b981">🌐 Full App</a>
-          </div>
-        </form>
-      </section>
+<main class="container">
+  <!-- Onboarding -->
+  <div id="row-onboarding" class="row">
+    <section class="panel">
+      <h2>Onboarding Form</h2>
+      <div class="progress"><div id="bar" class="bar"></div></div>
+      <form id="form">
+        <label>Name</label><input id="name" required/>
+        <label>Email</label><input id="email" type="email" required/>
+        <label>Role</label>
+        <select id="role" required>
+          <option value="">Select</option><option>Student</option><option>Faculty</option><option>Admin</option>
+        </select>
+        <button class="btn" type="submit">🚀 Submit</button>
+      </form>
+    </section>
+    <aside class="panel">
+      <h2>What Happens</h2>
+      <p class="muted">After form submit → progress completes → Dashboard unlocks with KPIs, charts, AI assistant.</p>
+    </aside>
+  </div>
 
-      <aside class="panel">
-        <h2>What happens next?</h2>
-        <ul class="muted" style="margin-top:8px; line-height:1.6">
-          <li>Auto-verify identity & generate University ID</li>
-          <li>Assign courses/services based on <strong>role</strong></li>
-          <li>Personalized dashboard with progress & analytics</li>
-        </ul>
-        <div style="margin-top:14px; border-radius:12px; overflow:hidden;">
-          <img src="https://source.unsplash.com/800x520/?university,students" alt="Preview" style="width:100%; display:block;">
+  <!-- Dashboard -->
+  <div id="row-dashboard" class="row hidden">
+    <section class="panel col-12">
+      <h2>Welcome, <span id="who">User</span></h2>
+      <p class="muted" id="roleLine"></p>
+      <div class="kpis">
+        <div class="kpi"><div class="muted">Onboarding</div><h3>100%</h3></div>
+        <div class="kpi"><div class="muted">Time Saved</div><h3>3×</h3></div>
+        <div class="kpi"><div class="muted">Workload Cut</div><h3>-60%</h3></div>
+        <div class="kpi"><div class="muted">Satisfaction</div><h3>+30%</h3></div>
+      </div>
+      <div class="grid" style="margin-top:16px;">
+        <div class="panel col-6"><h3>Process Breakdown</h3><canvas id="donut"></canvas></div>
+        <div class="panel col-6"><h3>Adoption Over Time</h3><canvas id="line"></canvas></div>
+      </div>
+      <div class="panel col-12" style="margin-top:16px;">
+        <h3>Impact Calculator</h3>
+        <div class="calc-grid">
+          <div><label>Days (current)</label><input id="curDays" type="number" value="9"/></div>
+          <div><label>People/month</label><input id="people" type="number" value="120"/></div>
+          <div><label>Hourly cost (₹)</label><input id="hourCost" type="number" value="500"/></div>
+          <div style="display:flex;align-items:flex-end;"><button id="calcBtn" class="btn" type="button">Calculate</button></div>
         </div>
-      </aside>
-    </div>
+        <div id="calcOut" class="muted" style="margin-top:10px;">—</div>
+      </div>
+    </section>
+    <aside class="panel col-12">
+      <h2>AI Assistant</h2>
+      <div class="chat">
+        <div id="chatLog" class="chat-log"><div class="msg bot">Hi! Ask me: "status", "courses", "impact".</div></div>
+        <div class="chat-input"><input id="chatInput" placeholder="Type..."/><button id="chatSend" class="btn" type="button">Send</button></div>
+      </div>
+    </aside>
+  </div>
+</main>
 
-    <!-- DASHBOARD ROW -->
-    <div id="row-dashboard" class="row hidden">
-      <section class="panel col-8">
-        <h2>Welcome, <span id="who">User</span> 👋</h2>
-        <p class="muted" id="roleLine">Role: Student</p>
+<footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
 
-        <!-- KPIs -->
-        <div class="kpis">
-          <div class="kpi"><div class="muted">Onboarding</div><h3 id="kpi-onb">100%</h3></div>
-          <div class="kpi"><div class="muted">Time Saved</div><h3 id="kpi-time">3×</h3></div>
-          <div class="kpi"><div class="muted">Admin Workload</div><h3 id="kpi-work">-60%</h3></div>
-          <div class="kpi"><div class="muted">Satisfaction</div><h3 id="kpi-sat">+30%</h3></div>
-        </div>
-
-        <!-- CHARTS -->
-        <div class="grid" style="margin-top:16px;">
-          <div class="panel col-6">
-            <h3 style="margin:0 0 6px;">Process Breakdown</h3>
-            <canvas id="donut"></canvas>
-          </div>
-          <div class="panel col-6">
-            <h3 style="margin:0 0 6px;">Adoption Over Time</h3>
-            <canvas id="line"></canvas>
-          </div>
-        </div>
-
-        <!-- IMPACT CALCULATOR -->
-        <div class="panel col-12" style="margin-top:16px;">
-          <h3 style="margin:0 0 8px;">Impact Calculator</h3>
-          <p class="muted" style="margin-top:0">Estimate time & cost savings after adopting UNIVERSIA.</p>
-          <div class="calc-grid">
-            <div>
-              <label>Current onboarding time (days)</label>
-              <input id="curDays" type="number" min="1" value="9" />
-            </div>
-            <div>
-              <label>Avg. people onboarded per month</label>
-              <input id="people" type="number" min="1" value="120" />
-            </div>
-            <div>
-              <label>Avg. hourly cost (₹)</label>
-              <input id="hourCost" type="number" min="0" value="500" />
-            </div>
-            <div style="display:flex; align-items:flex-end;">
-              <button id="calcBtn" class="btn" type="button">Calculate Savings</button>
-            </div>
-          </div>
-          <div id="calcOut" class="muted" style="margin-top:10px;">—</div>
-        </div>
-      </section>
-
-      <!-- AI ASSISTANT -->
-      <aside class="panel col-4">
-        <h2>AI Assistant</h2>
-        <p class="muted" style="margin-top:0">Ask about courses, status, or impact.</p>
-        <div class="chat">
-          <div id="chatLog" class="chat-log" aria-live="polite">
-            <div class="msg bot">Hi! I can help with your onboarding. Try: “what’s my status?”, “show courses”, or “impact”.</div>
-          </div>
-          <div class="chat-input">
-            <input id="chatInput" placeholder="Type a question…" />
-            <button id="chatSend" class="btn" type="button">Send</button>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </main>
-
-  <footer style="text-align:center; padding:18px; color:var(--muted);">
-    © 2025 Team UNIVERSIA — Hackathon Project
-  </footer>
-
-  <script>
-    // ===== Dark mode toggle (persisted) =====
-    const darkToggle = document.getElementById('darkToggle');
-    function setDark(on){
-      document.body.classList.toggle('dark', on);
-      localStorage.setItem('universia-dark', on ? '1' : '0');
-      darkToggle.textContent = on ? '☀️ Light' : '🌙 Dark';
-      darkToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
-    }
-    setDark(localStorage.getItem('universia-dark') === '1');
-    darkToggle.addEventListener('click', ()=> setDark(!document.body.classList.contains('dark')));
-
-    // ===== Onboarding form → Dashboard =====
-    const form = document.getElementById('form');
-    const bar = document.getElementById('bar');
-    const rowOnb = document.getElementById('row-onboarding');
-    const rowDash = document.getElementById('row-dashboard');
-    const who = document.getElementById('who');
-    const roleLine = document.getElementById('roleLine');
-
-    form.addEventListener('input', () => {
-      const vals = [form.name?.value || '', document.getElementById('name').value.trim(), document.getElementById('email').value.trim(), document.getElementById('role').value.trim()];
-      const total = 3, filled = [vals[1], vals[2], vals[3]].filter(Boolean).length;
-      bar.style.width = Math.floor(filled/total*100) + '%';
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim() || 'User';
-      const role = document.getElementById('role').value || 'Student';
-      who.textContent = name;
-      roleLine.textContent = 'Role: ' + role;
-
-      // swap views
-      bar.style.width = '100%';
-      rowOnb.classList.add('hidden');
-      rowDash.classList.remove('hidden');
-
-      // init charts after dashboard visible
-      setTimeout(()=>initCharts(role), 50);
-    });
-
-    // ===== Charts (Chart.js) =====
-    let donutChart, lineChart;
-    function initCharts(role){
-      const donutCtx = document.getElementById('donut').getContext('2d');
-      const lineCtx  = document.getElementById('line').getContext('2d');
-
-      const roleAdjust = (r)=> r==='Admin' ? [25,45,30] : r==='Faculty' ? [30,35,35] : [40,35,25];
-      const [formFilling, approvals, automation] = roleAdjust(role);
-
-      donutChart?.destroy();
-      donutChart = new Chart(donutCtx, {
-        type:'doughnut',
-        data:{
-          labels:['Form Filling','Approvals','Automation'],
-          datasets:[{ data:[formFilling, approvals, automation] }]
-        },
-        options:{
-          responsive:true,
-          plugins:{ legend:{ position:'bottom' } },
-          cutout:'60%'
-        }
-      });
-
-      lineChart?.destroy();
-      lineChart = new Chart(lineCtx, {
-        type:'line',
-        data:{
-          labels:['Jan','Feb','Mar','Apr','May','Jun'],
-          datasets:[{
-            label:'Adoption %',
-            data:[10,22,38,55,73,88],
-            fill:false,
-            tension:.35
-          }]
-        },
-        options:{
-          responsive:true,
-          scales:{ y:{ min:0, max:100, ticks:{ stepSize:20 } } }
-        }
-      });
-    }
-
-    // ===== Impact Calculator =====
-    const curDays  = document.getElementById('curDays');
-    const people   = document.getElementById('people');
-    const hourCost = document.getElementById('hourCost');
-    const calcBtn  = document.getElementById('calcBtn');
-    const calcOut  = document.getElementById('calcOut');
-
-    function calcImpact(){
-      const days = Math.max(1, Number(curDays.value||0));
-      const p = Math.max(1, Number(people.value||0));
-      const cost = Math.max(0, Number(hourCost.value||0));
-
-      const newDays = Math.max(1, Math.round(days/3)); // 3× faster
-      const hoursSavedPerPerson = (days - newDays) * 8; // 8h/day
-      const totalHours = hoursSavedPerPerson * p;
-      const currency = '₹';
-      const rupees = totalHours * cost;
-
-      calcOut.innerHTML =
-        `<strong>Result:</strong> Onboarding time drops from <strong>${days}d</strong> to <strong>${newDays}d</strong>.<br/>
-         You save ~<strong>${hoursSavedPerPerson} hours/person</strong> ⇒ <strong>${totalHours} hours/month</strong>.<br/>
-         Estimated cost savings: <strong>${currency}${rupees.toLocaleString()}</strong> per month.`;
-    }
-    calcBtn.addEventListener('click', calcImpact);
-
-    // ===== Mini AI Assistant (intent-based) =====
-    const chatLog   = document.getElementById('chatLog');
-    const chatInput = document.getElementById('chatInput');
-    const chatSend  = document.getElementById('chatSend');
-
-    function addMsg(text, who='bot'){
-      const div = document.createElement('div');
-      div.className = 'msg ' + (who==='me' ? 'me':'bot');
-      div.textContent = text;
-      chatLog.appendChild(div);
-      chatLog.scrollTop = chatLog.scrollHeight;
-    }
-
-    function reply(q){
-      const s = q.toLowerCase();
-      if(/status|onboard/.test(s)) return 'Your onboarding is at 100%. ID generated; dashboard active.';
-      if(/course|subject/.test(s)) return 'Enrolled: AI, Cloud, Data Science. Labs open from Monday.';
-      if(/impact|saving|roi|cost/.test(s)) return 'Average time saved: 3×; admin workload -60%; satisfaction +30%. Use the Impact Calculator below for exact numbers.';
-      if(/help|how|guide/.test(s)) return 'Try: “show courses”, “what’s my status”, “impact”, or “approval process”.';
-      if(/approval|admin/.test(s)) return 'Approvals auto-routed to Admin; average approval time is 2 hours.';
-      return 'Got it. For now I can answer about status, courses, approvals, and impact.';
-    }
-
-    function sendChat(){
-      const v = chatInput.value.trim();
-      if(!v) return;
-      addMsg(v, 'me');
-      setTimeout(()=> addMsg(reply(v), 'bot'), 250);
-      chatInput.value='';
-    }
-    chatSend.addEventListener('click', sendChat);
-    chatInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); sendChat(); } });
-  </script>
+<script>
+  const form=document.getElementById("form"),bar=document.getElementById("bar"),
+        rowOnb=document.getElementById("row-onboarding"),rowDash=document.getElementById("row-dashboard"),
+        who=document.getElementById("who"),roleLine=document.getElementById("roleLine");
+  form.addEventListener("input",()=>{let f=0;["name","email","role"].forEach(id=>{if(document.getElementById(id).value.trim())f++;});
+    bar.style.width=(f/3*100)+"%";});
+  form.addEventListener("submit",e=>{
+    e.preventDefault();who.textContent=document.getElementById("name").value||"User";
+    roleLine.textContent="Role: "+(document.getElementById("role").value||"Student");
+    rowOnb.classList.add("hidden");rowDash.classList.remove("hidden");setTimeout(initCharts,50);
+  });
+  function initCharts(){
+    new Chart(document.getElementById("donut"),{type:"doughnut",
+      data:{labels:["Form","Approvals","Automation"],datasets:[{data:[40,35,25]}]},
+      options:{plugins:{legend:{labels:{color:"white"}}}}});
+    new Chart(document.getElementById("line"),{type:"line",
+      data:{labels:["Jan","Feb","Mar","Apr","May","Jun"],datasets:[{label:"Adoption %",data:[10,25,45,60,80,90],borderColor:"#60a5fa"}]},
+      options:{scales:{x:{ticks:{color:"white"}},y:{ticks:{color:"white"},min:0,max:100}}}});
+  }
+  document.getElementById("calcBtn").addEventListener("click",()=>{
+    let d=+curDays.value,p=+people.value,c=+hourCost.value;
+    let newD=Math.max(1,Math.round(d/3)),hrs=(d-newD)*8*p,savings=hrs*c;
+    calcOut.innerHTML=Reduced from ${d}→${newD} days.<br>Saved <b>${hrs}</b> hrs = <b>₹${savings.toLocaleString()}</b>/month.;
+  });
+  const chatLog=document.getElementById("chatLog"),chatInput=document.getElementById("chatInput");
+  function addMsg(t,cls){let div=document.createElement("div");div.className="msg "+cls;div.textContent=t;chatLog.appendChild(div);chatLog.scrollTop=chatLog.scrollHeight;}
+  document.getElementById("chatSend").onclick=()=>{let v=chatInput.value.trim();if(!v)return;addMsg(v,"me");
+    setTimeout(()=>{let r="I can answer about status, courses, or impact.";
+      if(/status/.test(v))r="Onboarding 100%. ID ready.";
+      else if(/course/.test(v))r="You are enrolled in AI, Cloud, Data Science.";
+      else if(/impact/.test(v))r="Average time saved 3×; workload -60%; satisfaction +30%.";
+      addMsg(r,"bot");},300);chatInput.value="";};
+</script>
 </body>
 </html>
