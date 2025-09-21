@@ -1,45 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team UNIVERSIA - Solution</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Team UNIVERSIA — Solution</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f9fbfd; color: #222; }
-    header { background: #2563eb; color: white; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
-    header .logo { font-weight: bold; font-size: 20px; }
-    nav a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
-    .container { max-width: 900px; margin: 40px auto; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    h2 { color: #2563eb; }
-    footer { margin-top: 50px; padding: 15px; text-align: center; font-size: 14px; background: #f1f5f9; color: #555; }
+    :root{
+      --brand:#2563eb;
+      --bg:#f9fbfd;
+      --card:#ffffff;
+      --muted:#6b7280;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+    }
+    header{
+      background:var(--brand);
+      color:white;
+      padding:14px 28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .logo{ font-weight:700; letter-spacing:0.6px; }
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:600;
+      opacity:0.95;
+    }
+    nav a.active{
+      outline:2px solid rgba(255,255,255,0.15);
+      padding:6px 10px;
+      border-radius:8px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .wrap{
+      max-width:980px;
+      margin:32px auto;
+      padding:22px;
+      background:var(--card);
+      border-radius:12px;
+      box-shadow:0 6px 18px rgba(17,24,39,0.06);
+    }
+
+    h1{ color:var(--brand); margin:0 0 10px 0; }
+    p.lead{ color:var(--muted); margin:8px 0 18px 0; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 260px;
+      gap:18px;
+      align-items:start;
+    }
+
+    .card{
+      background:#fbfdff;
+      padding:16px;
+      border-radius:10px;
+      box-shadow: inset 0 0 0 1px rgba(37,99,235,0.03);
+    }
+
+    ul{ padding-left:18px; color:#333; }
+    li{ margin:8px 0; }
+
+    /* small screens */
+    @media (max-width:900px){
+      .grid{ grid-template-columns: 1fr; }
+      .metrics{ order: -1; margin-bottom:8px; }
+    }
+
+    footer{
+      text-align:center;
+      padding:18px;
+      color:var(--muted);
+      margin-top:28px;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">Team UNIVERSIA</div>
-    <nav>
+    <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="problem.html">Problem</a>
-      <a href="solution.html">Solution</a>
+      <a href="solution.html" id="nav-solution">Solution</a>
       <a href="workflow.html">Workflow</a>
       <a href="demo.html">Demo</a>
       <a href="impact.html">Impact</a>
     </nav>
   </header>
 
-  <div class="container">
-    <h2>Our Solution</h2>
-    <p>We propose an automated onboarding platform with the following features:</p>
-    <ul>
-      <li>📌 One-click digital onboarding for students and staff</li>
-      <li>📌 Automated workflows to reduce manual paperwork</li>
-      <li>📌 Cloud-based dashboard for admins</li>
-      <li>📌 Scalable and deployable in under 48 hours</li>
-    </ul>
-  </div>
+  <main class="wrap" role="main">
+    <div class="grid">
+      <section>
+        <h1>Solution</h1>
+        <p class="lead">An automated onboarding platform that reduces manual steps and speeds up student onboarding by 3×.</p>
 
-  <footer>
-    © 2025 Team UNIVERSIA | Hackathon Project
-  </footer>
-</body>
-</html>
+        <div class="card" aria-live="polite">
+          <h3>What we built</h3>
+          <ul>
+            <li>One-click digital on
