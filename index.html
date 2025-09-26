@@ -1,55 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Universia</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Team UNIVERSIA — Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand1:#60a5fa; --brand2:#2563eb; --brand3:#9333ea;
+      --bg:#0f1724; --muted:#9ca3af;
+    }
+    body{margin:0;font-family:'Poppins',sans-serif;background:var(--bg);color:#e6eefc;}
+    header{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+      padding:14px 28px;backdrop-filter:blur(6px);background:rgba(7,17,36,0.7);}
+    .logo{font-weight:700;font-size:24px;color:white;letter-spacing:1px;}
+    nav a{color:#dbeafe;text-decoration:none;margin-left:20px;font-weight:600;}
+    nav a.active{border-bottom:3px solid #fff;padding-bottom:4px;}
+
+    /* Hero */
+    .hero{position:relative;text-align:center;padding:120px 20px 80px;
+      background:linear-gradient(rgba(15,23,36,.85),rgba(15,23,36,.85)),
+                 url('https://source.unsplash.com/1600x800/?university,technology') center/cover;}
+    .hero-title{
+      font-size:72px;font-weight:800;line-height:1.05;margin:0 0 16px;
+      background:linear-gradient(90deg,var(--brand1),var(--brand2),var(--brand3));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      text-shadow:0 6px 20px rgba(0,0,0,0.45);
+      opacity:0;transform:translateY(20px);animation:rise 1.2s ease forwards;
+    }
+    @keyframes rise{to{opacity:1;transform:translateY(0);}}
+    .hero-tagline{font-size:20px;max-width:780px;margin:0 auto 28px;color:var(--muted);}
+    .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn{padding:14px 26px;border-radius:12px;font-weight:700;text-decoration:none;}
+    .btn-primary{background:linear-gradient(90deg,var(--brand2),var(--brand3));color:white;}
+    .btn-outline{border:2px solid rgba(255,255,255,0.5);color:white;}
+
+    /* Features */
+    .features{max-width:1100px;margin:60px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;padding:0 20px;}
+    .card{background:rgba(255,255,255,0.04);border-radius:14px;padding:24px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.4);}
+    .card img{width:64px;margin-bottom:10px;}
+    .card h3{margin:0 0 8px;color:#bfdbfe;}
+
+    /* Stats */
+    .stats{background:#111827;padding:60px 20px;text-align:center;}
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:900px;margin:0 auto;}
+    .stat h2{font-size:40px;margin:0;color:#93c5fd;}
+    .stat p{margin:6px 0 0;color:var(--muted);}
+
+    /* Footer */
+    footer{padding:22px;text-align:center;color:var(--muted);background:#0b1120;margin-top:40px;}
+  </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#problem">Problem</a></li>
-      <li><a href="#solution">Solution</a></li>
-      <li><a href="#workflow">Workflow</a></li>
-    </ul>
-  </nav>
+  <header>
+    <div class="logo">UNIVERSIA</div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="problem.html">Problem</a>
+      <a href="solution.html">Solution</a>
+      <a href="workflow.html">Workflow</a>
+      <a href="demo.html">Demo</a>
+      <a href="impact.html">Impact</a>
+    </nav>
+  </header>
 
-  <!-- Hero Section -->
   <section class="hero">
-    <!-- 🔹 Only new line added -->
-    <img src="logo.png" alt="Universia Logo" class="logo">
-
-    <h1>UNIVERSIA</h1>
-    <p>One platform. Smarter onboarding. Infinite possibilities.</p>
-    
-    <div class="buttons">
-      <button class="demo">🚀 Try Demo</button>
-      <button class="solution">📋 See Solution</button>
+    <h1 class="hero-title">UNIVERSIA</h1>
+    <p class="hero-tagline">One platform. Smarter onboarding. Infinite possibilities.</p>
+    <div class="btns">
+      <a href="demo.html" class="btn btn-primary">🚀 Try Demo</a>
+      <a href="solution.html" class="btn btn-outline">📖 See Solution</a>
     </div>
   </section>
 
-  <!-- Features Section -->
   <section class="features">
-    <div class="feature">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/automation.png" alt="Automation"/>
       <h3>Automation</h3>
       <p>One-click workflows reduce manual tasks and errors.</p>
     </div>
-    <div class="feature">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/ai.png" alt="AI Assistant"/>
       <h3>AI Assistant</h3>
-      <p>Smart support bot answers onboarding queries.</p>
+      <p>Smart support bot answers onboarding queries instantly.</p>
     </div>
-    <div class="feature">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/combo-chart.png" alt="Analytics"/>
       <h3>Analytics</h3>
       <p>Charts and KPIs show clear ROI and efficiency.</p>
     </div>
-    <div class="feature">
+    <div class="card">
+      <img src="https://img.icons8.com/color/96/university.png" alt="Scalability"/>
       <h3>Scalable</h3>
-      <p>Deployable across multiple universities.</p>
+      <p>Deployable across multiple universities in under 48 hours.</p>
     </div>
   </section>
+
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat"><h2 id="stat1">0×</h2><p>Faster Onboarding</p></div>
+      <div class="stat"><h2 id="stat2">0%</h2><p>Admin Workload Cut</p></div>
+      <div class="stat"><h2 id="stat3">0%</h2><p>Student Satisfaction</p></div>
+    </div>
+  </section>
+
+  <footer>© 2025 Team UNIVERSIA — Hackathon Project</footer>
+
+  <script>
+    // animated counters
+    function animateValue(id,start,end,duration,suffix=""){
+      let obj=document.getElementById(id),startTime=null;
+      function step(ts){
+        if(!startTime) startTime=ts;
+        let p=Math.min((ts-startTime)/duration,1);
+        obj.textContent=Math.floor(start+(end-start)*p)+suffix;
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    setTimeout(()=>{
+      animateValue("stat1",0,3,1200,"×");
+      animateValue("stat2",0,-60,1200,"%");
+      animateValue("stat3",0,30,1200,"%");
+    },600);
+  </script>
 </body>
 </html>
 
